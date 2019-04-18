@@ -33,6 +33,13 @@ class Accomment(models.Model):
     updatedate = models.DateTimeField(db_column='updateDate', blank=True, null=True)  # Field name made lowercase.
     issignedupcollege = models.IntegerField(db_column='isSignedUpCollege', blank=True, null=True)  # Field name made lowercase.
 
+    def toJSON(self):
+        return  {'username': self.username,
+                  'cid': self.cid,
+                  'quoteid': self.quoteid,
+                  'postdate': self.postdate,
+                  'content': self.content}
+
     class Meta:
         managed = False
         db_table = 'accomment'

@@ -1,4 +1,5 @@
 {% load static %}
+{% load rebin_tags %}
 
 <!DOCTYPE html>
 <!-- 
@@ -310,27 +311,52 @@ License: You must have a valid license purchased only from themeforest (the abov
                   </ul>
 
                   <h2>Comments</h2>
+                      <div class="comments">
+                        {% for accm in accm_list %}
+                            {% quotedComments accm.quotes %}
+{#                            {% for qt in accm.quote %}#}
+{#                                <div class="media">#}
+{#                                  <a href="#" class="pull-left">#}
+{#                                  <div>-</div>#}
+{#                                  </a>#}
+{#                                  <div class="media-body">#}
+{#                                    <h4 class="media-heading">{{ qt.username }} {{ qt.cid }}|ref:{{ qt.quoteid }} <span>{{ qt.postdate }} / <a href="#">Reply</a></span></h4>#}
+{#                                    <p>{{ qt.content }}</p>#}
+{#                                  </div>#}
+{#                                </div>#}
+{#                            {% endfor %}#}
+
+                            <div class="media">
+                              <a href="#" class="pull-left">
+                              <div>-</div>
+                              </a>
+                              <div class="media-body">
+                                <h4 class="media-heading">{{ accm.username }} {{ accm.cid }}|ref:{{ accm.quoteid }} <span>{{ accm.postdate }} / <a href="#">Reply</a></span></h4>
+                                <p>{{ accm.content }}</p>
+                              </div>
+                            </div>
+                        {% endfor %}
+                      </div>
+
                   <div class="comments">
                     <div class="media">
-                      <a href="#" class="pull-left">
-{#                      <img src="{% static 'frontend/pages/img/people/img1-small.jpg' %}" alt="" class="media-object">#}
+                      <a href="#" class="pull-right">
+                              <div>-</div>
                       </a>
                       <div class="media-body">
                         <h4 class="media-heading">Media heading <span>5 hours ago / <a href="#">Reply</a></span></h4>
                         <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
                         <!-- Nested media object -->
                         <div class="media">
-                          <a href="#" class="pull-left">
+                          <a href="#" class="pull-right">
                               <div>-</div>
-{#                          <img src="{% static 'frontend/pages/img/people/img2-small.jpg' %}" alt="" class="media-object">#}
                           </a>
                           <div class="media-body">
                             <h4 class="media-heading">Media heading <span>17 hours ago / <a href="#">Reply</a></span></h4>
                             <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
                             <div class="media">
-                              <a href="#" class="pull-left">
+                              <a href="#" class="pull-right">
                               <div>-</div>
-{#                              <img src="{% static 'frontend/pages/img/people/img3-small.jpg' %}" alt="" class="media-object">#}
                               </a>
                               <div class="media-body">
                                 <h4 class="media-heading">Media heading <span>2 days ago / <a href="#">Reply</a></span></h4>
@@ -342,7 +368,7 @@ License: You must have a valid license purchased only from themeforest (the abov
                         </div>
                         <!--end media-->
                         <div class="media">
-                          <a href="#" class="pull-left">
+                          <a href="#" class="pull-right">
                           <img src="{% static 'frontend/pages/img/people/img3-small.jpg' %}" alt="" class="media-object">
                           </a>
                           <div class="media-body">
@@ -355,7 +381,7 @@ License: You must have a valid license purchased only from themeforest (the abov
                     </div>
                     <!--end media-->
                     <div class="media">
-                      <a href="#" class="pull-left">
+                      <a href="#" class="pull-right">
                       <img src="{% static 'frontend/pages/img/people/img4-small.jpg' %}" alt="" class="media-object">
                       </a>
                       <div class="media-body">
@@ -415,7 +441,7 @@ License: You must have a valid license purchased only from themeforest (the abov
     <script type="text/javascript">
         jQuery(document).ready(function() {
             Layout.init();
-            Layout.initTwitter();
+{#            Layout.initTwitter();#}
         });
     </script>
     <!-- END PAGE LEVEL JAVASCRIPTS -->
