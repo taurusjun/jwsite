@@ -1,0 +1,22 @@
+1. 使用inspectdb命令，从DB里生成model.
+python manage.py inspectdb
+注意：此能力需要mysqlclient支持，必须先安装包，如果有安装pymysql必须先卸载，否则会有冲突。
+
+2. 如果安装mysqlclient失败，即pip install mysqlclient出现如下报错：
+Failed building wheel for mysqlclient
+ld: library not found for -lssl
+  clang: error: linker command failed with exit code 1 (use -v to see invocation)
+  error: command 'clang' failed with exit status 1
+  Running setup.py bdist_wheel for mysqlclient: finished with status 'error'
+
+修复：LDFLAGS=-L/usr/local/opt/openssl/lib pip install mysqlclient
+
+3.依赖包列表的生成和导入安装
+#creat
+pip freeze > requirements.txt
+#install
+pip install -r requirements
+
+4.
+django-ckeditor后台富文本编辑器
+http://yshblog.com/blog/193
