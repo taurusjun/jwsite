@@ -38,7 +38,9 @@ class Accomment(models.Model):
                   'cid': self.cid,
                   'quoteid': self.quoteid,
                   'postdate': self.postdate,
-                  'content': self.content}
+                  'content': self.content,
+                  'count': self.count,
+                 }
 
     class Meta:
         managed = False
