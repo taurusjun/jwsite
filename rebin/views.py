@@ -1,4 +1,5 @@
 from django.core.exceptions import ObjectDoesNotExist
+from django.db.models import Count
 from django.shortcuts import render
 
 # Create your views here.
@@ -16,6 +17,14 @@ class MyView(View):
         acm2 = Accomment.objects.get(cid=quoteid)
         return HttpResponse("Hello, world. You're at the rebin index.")
 
+class ACTopicListView(ListView):
+    queryset = Accomment.objects.order_by('-updatedate').values('acid','updatedate').distinct()
+    # queryset = Accomment.objects.order_by('-updatedate').values('acid').annotate(count=Count('cid'))
+    context_object_name = 'actopic_list'
+    template_name = 'blog.html'
+    paginate_by = 10
+
+
 class ACCommentsDetailsView(TemplateView):
     # queryset = Accomment.objects.filter(acid='10130324').order_by('-updatedate')
     # context_object_name = 'accm_list'
@@ -29,7 +38,6 @@ class ACCommentsDetailsView(TemplateView):
             # Add in a QuerySet of all the books
             acqs = Accomment.objects.filter(acid=acid).order_by('-updatedate')
             # acqs = Accomment.objects.filter(acid='10130324').order_by('-updatedate')
-            # aclts = [{"username":"1","cid":"2","quoteid":"3","postdate":"4","content":5}]
             aclts = []
             for idx, record in enumerate(acqs):
                 rec = record.toJSON()

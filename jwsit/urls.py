@@ -18,6 +18,7 @@ from django.contrib import admin
 from rebin  import views
 
 urlpatterns = [
+    url(r'^actopics/$', views.ACTopicListView.as_view()),
     url(r'^accomments/$', views.ACCommentsDetailsView.as_view()),
     url(r'^admin/', admin.site.urls),
     url(r'^about/$', views.MyView.as_view()),
