@@ -20,3 +20,16 @@ pip install -r requirements
 4.
 django-ckeditor后台富文本编辑器
 http://yshblog.com/blog/193
+
+5. 如何使用uwsgi+nginx
+(1) 配置uwsgi文件如uwsgi9090.ini
+(2) 在ngnix配置文件 /usr/local/etc/nginx/nginx.conf 中加入django.ngnix文件中的内容
+注：配置文件地址可以通过ngnix -h 来查看
+(3) 启动命令
+uwsgi --ini uwsgi9090.ini & nginx
+注意：如果使用了virtualenv，需要将虚拟目录加入命令行，比如 uwsgi -H ../Envs/rebin --ini uwsgi9090.ini & nginx
+(4) 停止
+uwsgi --stop uwsgi9090.pid
+(或者 killall -9 uwsgi)
+nginx -s stop
+

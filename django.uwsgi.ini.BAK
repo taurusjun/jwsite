@@ -1,0 +1,37 @@
+[uwsgi]
+# 项目根目录
+chdir = /Users/wangjun/PG/projects/test/django/jwsit
+# 指定 wsgi 模块
+module = jwsit.wsgi
+# 对于本机端口提供服务
+socket = 127.0.0.1:9000
+# 主进程
+# master = true
+# 子进程树
+# workers = 2
+# processes = 2
+# PID 文件
+pidfile = uwsgi.pid
+# 启动 uWSGI 的用户和用户组
+# uid = www
+# gid = www
+# 当服务停止的时候自动移除 unix Socket和pid文件，
+vacuum = true
+# 超时时间
+harakiri=30
+# 平滑重启时间
+reload-mercy = 10
+# 最大请求书
+max-requests = 1000
+# 限制每个uWSGI进程的虚拟内存使用数。
+limit-as = 512
+# 内部缓存区大小
+buffer-size = 30000
+# 启用线程
+enable-threads=true
+#  日志文件
+# daemonize = /Users/wangjun/PG/projects/test/django/jwsit/uwsgi_run.log
+# 不记录正常信息，只记录错误信息
+# disable-logging = true
+#vhost = true          //多站模式
+#no-site = true        //多站模式时不设置入口模块和文件
