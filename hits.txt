@@ -21,7 +21,12 @@ pip install -r requirements
 django-ckeditor后台富文本编辑器
 http://yshblog.com/blog/193
 
-5. 如何使用uwsgi+nginx
+5.安装uwsgi
+#pip3 install uwsgi
+#ln -s /usr/local/python356/bin/uwsgi /usr/local/bin/uwsgi  #建立软链接
+#uwsgi --version  #检查安装成功
+
+6. 如何使用uwsgi+nginx
 (1) 配置uwsgi文件如uwsgi9090.ini
 (2) 在ngnix配置文件 /usr/local/etc/nginx/nginx.conf 中加入django.ngnix文件中的内容
 注：配置文件地址可以通过ngnix -h 来查看
