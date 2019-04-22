@@ -51,7 +51,7 @@ show grants for 'django'@'%';
 
 (2) 如果使用原有的帐户：
 grant usage on *.* to root@localhost identified by '#####输入密码#####';  # 进入MySQL设置的密码
-GRANT all privileges on *.* to 'root'@'localhost' IDENTIFIED BY 'root' WITH GRANT OPTION;
+GRANT all privileges on *.* to 'root'@'localhost' IDENTIFIED BY '--#####输入密码#####' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 
 注意：
