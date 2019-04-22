@@ -38,3 +38,43 @@ uwsgi --stop uwsgi9090.pid
 (或者 killall -9 uwsgi)
 nginx -s stop
 
+7. mysql
+解决问题：1045, “Access denied for user ‘root’@’localhost’ (using password: YES)”
+(1) 最简单方式：添加新的用户赋权
+CREATE USER django@localhost IDENTIFIED BY '#####输入密码#####';
+grant all privileges on *.* to django@localhost with grant option;
+FLUSH PRIVILEGES;
+
+检查：
+SELECT user, host FROM mysql.user;
+show grants for 'django'@'%';
+
+(2) 如果使用原有的帐户：
+grant usage on *.* to root@localhost identified by '#####输入密码#####';  # 进入MySQL设置的密码
+GRANT all privileges on *.* to 'root'@'localhost' IDENTIFIED BY 'root' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+注意：
+查找所有用户SELECT user, host FROM mysql.user;
++--------+-------------------------+
+| user   | host                    |
++--------+-------------------------+
+| root   | %                       |
+| root   | 127.0.0.1               |
+| root   | ::1                     |
+| root   | localhost               |
++--------+-------------------------+
+这里有个坑：如果127.0.0.1和localhost都配置了的话，localhost会不生效
+
+8. 本地部署：
+(1)修改
+1) uwsgi9090.ini
+check-static = /root/projects/jwsite/rebin
+2)settings.py 改DB密码
+(2) 安装uwsgi+nginx
+(3) 安装mysql，并生成用户
+(4) 迁移数据
+python manage.py makemigrations
+python manage.py migrate
+(5) 启动
+uwsgi --ini uwsgi9090.ini & nginx
