@@ -67,6 +67,7 @@ FLUSH PRIVILEGES;
 这里有个坑：如果127.0.0.1和localhost都配置了的话，localhost会不生效
 
 8. 本地部署：
+(0) pip3 install -r requirements
 (1)修改
 1) uwsgi9090.ini
 check-static = /root/projects/jwsite/rebin
@@ -74,7 +75,7 @@ check-static = /root/projects/jwsite/rebin
 (2) 安装uwsgi+nginx
 (3) 安装mysql，并生成用户
 (4) 迁移数据
-python manage.py makemigrations
-python manage.py migrate
+python3 manage.py makemigrations
+python3 manage.py migrate
 (5) 启动
 uwsgi --ini uwsgi9090.ini & nginx
