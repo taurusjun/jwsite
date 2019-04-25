@@ -1,5 +1,5 @@
 from django.core.exceptions import ObjectDoesNotExist
-from django.db.models import Count
+from django.db.models import Count, Max
 from django.shortcuts import render
 
 # Create your views here.
@@ -18,8 +18,12 @@ class MyView(View):
         return HttpResponse("Hello, world. You're at the rebin index.")
 
 class ACTopicListView(ListView):
-    queryset = Accomment.objects.order_by('-updatedate').values('acid','updatedate').distinct()
-    # queryset = Accomment.objects.order_by('-updatedate').values('acid').annotate(count=Count('cid'))
+    queryset = Accomment.objects \
+                .values('acid') \
+                .annotate(cnt=Count('acid')) \
+                .annotate(latest=Max('postdate')) \
+                .order_by('-latest')
+
     context_object_name = 'actopic_list'
     template_name = 'blog.html'
     paginate_by = 10

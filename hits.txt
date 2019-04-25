@@ -68,6 +68,9 @@ FLUSH PRIVILEGES;
 
 8. 本地部署：
 (0) pip3 install -r requirements
+如果安装mysqlclient出现错误：OSError: mysql_config not found
+先执行：yum install mysql-devel gcc gcc-devel python-devel
+
 (1)修改
 1) uwsgi9090.ini
 check-static = /root/projects/jwsite/rebin
