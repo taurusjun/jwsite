@@ -19,7 +19,8 @@ class MyView(View):
 
 class ACTopicListView(ListView):
     queryset = Accomment.objects \
-                .values('acid') \
+                .select_related() \
+                .values('acid','acid__topic') \
                 .annotate(cnt=Count('acid')) \
                 .annotate(latest=Max('postdate')) \
                 .order_by('-latest')

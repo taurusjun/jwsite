@@ -7,10 +7,18 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
+class Actopic(models.Model):
+    acid = models.BigAutoField(primary_key=True)
+    topic = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'actopic'
+
 
 class Accomment(models.Model):
     cid = models.BigAutoField(primary_key=True)
-    acid = models.BigIntegerField(blank=True, null=True)
+    acid = models.ForeignKey(Actopic, models.DO_NOTHING, db_column='acid', blank=True, null=True)
     quoteid = models.BigIntegerField(db_column='quoteId', blank=True, null=True)  # Field name made lowercase.
     content = models.TextField(blank=True, null=True)
     postdate = models.DateTimeField(db_column='postDate', blank=True, null=True)  # Field name made lowercase.
