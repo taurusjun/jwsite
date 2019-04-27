@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-
+from jwsit import sensitive_info
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'jwsit.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'actest2',
-        'USER': 'root',
-        'PASSWORD': '123456',
-        'HOST': '127.0.0.1',
+        'NAME': sensitive_info.DB_INFO['NAME'],
+        'USER': sensitive_info.DB_INFO['USER'],
+        'PASSWORD': sensitive_info.DB_INFO['PASSWORD'],
+        'HOST': sensitive_info.DB_INFO['HOST'],
         'PORT': '3306',
     }
 }
