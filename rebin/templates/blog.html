@@ -306,14 +306,14 @@ License: You must have a valid license purchased only from themeforest (the abov
                   {% for actopic in actopic_list %}
                   <div class="row">
                     <div class="col-md-8 col-sm-8">
-                      <h2><a href="/accomments?acid={{ actopic.acid }}"># {{ actopic.acid }} {{ actopic.acid__topic }}</a></h2>
+                      <h2><a href="/accomments?acid={{ actopic.acid }}"># {{ actopic.acid }}</a></h2>
                       <ul class="blog-info">
                         <li><i class="fa fa-calendar"></i> {{ actopic.latest }}</li>
                         <li><i class="fa fa-comments"></i> {{ actopic.cnt }}</li>
-                        <li><i class="fa fa-tags"></i> article</li>
+                        <li><i class="fa fa-tags"></i> <a href="http://www.acfun.cn/a/ac{{ actopic.acid }}" target="_blank">原文</a> </li>
                       </ul>
-                      <p>Pellentesque viverra vehicula sem ut volutpat. </p>
-{#                      <a href="blog-item.html" class="more">Read more <i class="icon-angle-right"></i></a>#}
+                      <p>{{ actopic.acid__topic }} </p>
+                      <a href="/accomments?acid={{ actopic.acid }}" class="more">Read more <i class="icon-angle-right"></i></a>
                     </div>
                   </div>
                   <hr class="blog-post-sep">
