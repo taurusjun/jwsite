@@ -82,3 +82,8 @@ python3 manage.py makemigrations
 python3 manage.py migrate
 (5) 启动
 uwsgi --ini uwsgi9090.ini & nginx
+
+9. 迁移Metronic模版
+(1) 在支持正则匹配的编辑器中，做如下替换：
+(..\/..\/assets\/)([\.\/\w\d-]+)
+{% static '$2' %}

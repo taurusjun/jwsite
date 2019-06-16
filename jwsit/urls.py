@@ -16,8 +16,10 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from rebin  import views
+admin.autodiscover()
 
 urlpatterns = [
+    url(r'^$', views.IndexView.as_view()),
     url(r'^actopics/$', views.ACTopicListView.as_view()),
     url(r'^accomments/$', views.ACCommentsDetailsView.as_view()),
     url(r'^admin/', admin.site.urls),

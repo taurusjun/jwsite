@@ -714,6 +714,11 @@ body.page-header-fixed {
 /*.header-navigation .fa-search:before {
 	content: none;
 }*/
+.header-navigation .fixed-search-box {
+	padding: 22px;
+	width: 500px;
+}
+
 .header-navigation .search-box {
 	right: -7px;
 	top: 100%;

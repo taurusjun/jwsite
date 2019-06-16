@@ -303,14 +303,12 @@ License: You must have a valid license purchased only from themeforest (the abov
               <div class="row">
                 <!-- BEGIN LEFT SIDEBAR -->
                 <div class="col-md-9 col-sm-9 blog-item">
-                  <ul class="blog-info">
-                    <li><i class="fa fa-user"></i> By admin</li>
-                    <li><i class="fa fa-calendar"></i> 25/07/2013</li>
-                    <li><i class="fa fa-comments"></i> 17</li>
-                    <li><i class="fa fa-tags"></i> Metronic, Keenthemes, UI Design</li>
-                  </ul>
+{#                  <ul class="blog-info">#}
+{#                    <li><i class="fa fa-user"></i> {{ actopic.topic }}</li>#}
+{#                    <li><i class="fa fa-tags"></i>  <a href="http://www.acfun.cn/a/ac{{ actopic.acid }}" target="_blank">原文</a> </li>#}
+{#                  </ul>#}
 
-                  <h2>Comments</h2>
+                  <h3><a href="http://www.acfun.cn/a/ac{{ actopic.acid }}" target="_blank">原文：{{ actopic.topic }}</a></h3>
                       <div class="comments">
                         {% for accm in accm_list %}
                             {% quotedComments accm.quotes %}
